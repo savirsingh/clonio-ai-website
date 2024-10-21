@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3473756657091229"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clonio AI Chat</title>
+    <link rel="icon" href="icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin&display=swap" rel="stylesheet">
+	
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8Q69VNMZR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q8Q69VNMZR');
+</script>
+
+    <style>
+        body {
+            font-family: 'Palanquin', sans-serif;
+            background-color: #f4f4f4;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 72vh;
+        }
+        #chatbox {
+            width: 60%;
+            height: 60%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: white;
+            overflow-y: scroll;
+        }
+        #inputSection {
+            display: flex;
+            width: 60%;
+            margin-top: 10px;
+        }
+        #userMessage {
+            width: 100%;
+            padding: 10px;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .typing {
+            font-style: italic;
+            color: gray;
+        }
+        header {
+            background: #f4f4f4;
+            color: #333;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav h1 {
+            font-size: 32px;
+        }
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #3338;
+        }
+        nav {
+            background: #f4f4f4;
+            color: #333;
+            padding: 5px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav img {
+            filter: invert(4.31%);
+            width: 6em;
+            margin-left: 10px;
+        }
+	    a {
+  color: black;
+}
+a:hover {
+  opacity: 0.8;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/"><img src="clonio.jpeg"></a>
+            <ul>
+                <li><a href="/">Go home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="chatbox"></div>
+        <div id="inputSection">
+            <input type="text" id="userMessage" placeholder="Type your message here...">
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                const userName = localStorage.getItem('userName');
+                const otherName = localStorage.getItem('otherName');
+                const code = localStorage.getItem('code');
+                let typingTimeout;
+
+                function sendMessage() {
+                    const userMessage = $('#userMessage').val();
+                    if (userMessage.trim() !== "") {
+                        $('#chatbox').append(`<div class="message"><strong>${userName}:</strong> ${userMessage}</div>`);
+                        $('#chatbox').append('<div class="message typing">Clonio AI is typing...</div>');
+                        scrollToBottom();
+
+                        typingTimeout = setTimeout(function() {
+                            $('.typing').html('You ran out of free credits. Wait a day or <a href="/purchase">upgrade for $1.99</a>');
+                        }, 5000);
+
+                        $.post('https://clonioai.pythonanywhere.com/send_message', { user_message: userMessage, user_name: userName, other_name: otherName, code: code }, function(data) {
+                            clearTimeout(typingTimeout);
+                            $('.typing').remove();
+                            $('#chatbox').append(`<div class="message"><strong>${otherName}:</strong> ${data.response}</div>`);
+                            scrollToBottom();
+                        });
+
+                        $('#userMessage').val('');
+                    }
+                }
+
+                function scrollToBottom() {
+                    $('#chatbox').scrollTop($('#chatbox')[0].scrollHeight);
+                }
+
+                $('#userMessage').on('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            });
+        </script>
+    </main>
+</body>
+</html>
