@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS App Support - Clonio AI</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: #4CAF50;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+.faq-item {
+    margin-bottom: 1.5rem;
+}
+
+.faq-item h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.faq-item p {
+    margin: 0.5rem 0;
+}
+
+ul {
+    list-style: disc;
+    margin: 0.5rem 0 0 2rem;
+}
+
+a {
+    color: #4CAF50;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background: #f1f1f1;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Clonio AI iOS Support</h1>
+        <nav>
+            <a href="#faq">FAQs</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="faq">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-item">
+                <h3>How do I get started with Clonio AI?</h3>
+                <p>To get started, download Clonio AI from the App Store and follow the in-app instructions.</p>
+            </div>
+            <div class="faq-item">
+                <h3>The app tells me I ran out of credits. What do I do?</h3>
+                <p>If you've run out of credits, you can always purchase a subscription through the app. Subscriptions start at 5.99 USD/month and give you more accuracy as well as unlimited message credits. Alternatively, you can wait one day for your credits to restore.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How can I restore my purchases?</h3>
+                <p>To restore purchases, go to the app's store page and tap on "Restore Missing Purchases." This will recover any previous purchases linked to your account.</p>
+            </div>
+            <div class="faq-item">
+                <h3>The app isn't working correctly. What should I do?</h3>
+                <p>If you encounter issues, try the following troubleshooting steps:
+                    <ul>
+                        <li>Ensure you have the latest version of the app installed.</li>
+                        <li>Restart the app.</li>
+                        <li>Check your internet connection.</li>
+                        <li>Contact support if the issue persists.</li>
+                    </ul>
+                </p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you need further assistance, please reach out to our support team:</p>
+            <ul>
+                <li>Email: <a href="mailto:clonioai@guessoword.com">clonioai@guessoword.com</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Savir Singh & Guessoword Team. All rights reserved.</p>
+    </footer>
+    <script>
+document.querySelectorAll('.faq-item h3').forEach(item => {
+    item.addEventListener('click', () => {
+        const content = item.nextElementSibling;
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    });
+});
+</script>
+
+</body>
+</html>
